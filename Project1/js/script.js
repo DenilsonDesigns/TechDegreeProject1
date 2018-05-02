@@ -1,12 +1,10 @@
 // event listener to respond to "Show another quote" button clicks
 // when user clicks anywhere on the button, the "printQuote" function is called
-// document.getElementById('loadQuote').addEventListener("click", printQuote, false);
+ document.getElementById('loadQuote').addEventListener("click", printQuote, false);
 
 
 
 // Create an array of JavaScript objects to hold the data for your quotes.
-// Name the array quotes.
-// The quotes array should be accessible in the global scope, meaning it shouldn't be inside of a function.
 
 const quotes= [ 
 {
@@ -49,9 +47,14 @@ function getRandomQuote(){
 // printQuote calls the getRandomQuote function and stores the returned quote object in a variable.
 function printQuote(){
     let randomQuote= getRandomQuote();
-    return randomQuote;
-   
-   
+    
+    let finalQuote= `<p class="quote"> ${randomQuote.quote} </p>`;
+    finalQuote += `<p class="source">${randomQuote.source}</p>`;
+    finalQuote +=`<span class="citation">${randomQuote.citation}</span>`;
+    finalQuote +=`<span class="year">${randomQuote.year}</span>`;
+
+    document.getElementById("quote-box").innerHTML= finalQuote;
+
     //document.getElementById('quote-box').innerHTML;
     //document.write("<p class="quote"> [quote here] </p>")
     //Change the HTML content of a <p> element with id="demo":
@@ -60,10 +63,10 @@ function printQuote(){
     //how to pull elements from object
     //quotes[4].year
 
-
+    //return finalQuote;
 }
-
-document.getElementsByClassName("quote").innerHTML= "<p>hello</p>";
+//console.log(printQuote());
+//document.getElementById("quote-box").innerHTML= "";
 
 /* <p class="quote"> [quote here] </p>
 <p class="source"> [source here]
