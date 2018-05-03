@@ -3,9 +3,7 @@
  document.getElementById('loadQuote').addEventListener("click", printQuote, false);
 
 
-
 // Create an array of JavaScript objects to hold the data for your quotes.
-
 const quotes= [ 
 {
     quote: "Success is walking from failure to failure with no loss of enthusiasm.",
@@ -22,7 +20,8 @@ const quotes= [
 },
 {
     quote: "Knowing is not enough, we must apply. Willing is not enough, we must do.",
-    source: "Bruce Lee"
+    source: "Bruce Lee",
+    citation: "Some epic TV interview"
 },
 {
     quote: "Frankly my dear, I don't give a damn.",
@@ -32,10 +31,8 @@ const quotes= [
 }
 ]
 
-// Create a function named getRandomQuote which:
-// selects a random quote object from the quotes array.
-// returns the randomly selected quote object.
 
+// function returns the randomly selected quote object.
 function getRandomQuote(){
     //generate random num 0-4
     //return quote object of that random num
@@ -46,33 +43,22 @@ function getRandomQuote(){
 // Create a function named printQuote which follows these rules:
 // printQuote calls the getRandomQuote function and stores the returned quote object in a variable.
 function printQuote(){
+    //declaring object as a variable
     let randomQuote= getRandomQuote();
     
-    let finalQuote= `<p class="quote"> ${randomQuote.quote} </p>`;
+    //building html string
+    let finalQuote= `<p class="quote">${randomQuote.quote}</p>`;
     finalQuote += `<p class="source">${randomQuote.source}</p>`;
-    finalQuote +=`<span class="citation">${randomQuote.citation}</span>`;
-    finalQuote +=`<span class="year">${randomQuote.year}</span>`;
-
+    
+    //conditional if citation is present
+    if(randomQuote.citation != null){
+        finalQuote +=`<span class="citation">${randomQuote.citation}</span>`;
+    }
+    //conditional if year of quote is present
+    if(randomQuote.year != null){
+        finalQuote +=`<span class="year">${randomQuote.year}</span>`;
+    }
+    //final writing html to page
     document.getElementById("quote-box").innerHTML= finalQuote;
-
-    //document.getElementById('quote-box').innerHTML;
-    //document.write("<p class="quote"> [quote here] </p>")
-    //Change the HTML content of a <p> element with id="demo":
-    //document.getElementById("demo").innerHTML = "Paragraph changed!";
-    //document.getElementById('quote-box').innerHTML
-    //how to pull elements from object
-    //quotes[4].year
-
-    //return finalQuote;
 }
-//console.log(printQuote());
-//document.getElementById("quote-box").innerHTML= "";
-
-/* <p class="quote"> [quote here] </p>
-<p class="source"> [source here]
-  <span class="citation"> [citation here] </span>
-  <span class="year"> [year here] </span>
-</p> */
-
-
 
